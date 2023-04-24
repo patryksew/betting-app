@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'widgets/sliver_header.dart';
-import 'widgets/sliver_search_bar.dart';
+import 'widgets/sliver_search_button.dart';
 import 'widgets/sliver_nav_bar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -33,7 +33,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
         child: CustomScrollView(
           slivers: [
             const SliverHeader(),
-            const SliverSearchBar(),
+            const SliverSearchButton(),
             SliverNavBar(controller: _tabController),
             SliverToBoxAdapter(
               child: SizedBox(

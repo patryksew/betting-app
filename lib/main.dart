@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color.fromRGBO(248, 248, 248, 1),
         textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: Colors.black)),
         textTheme: GoogleFonts.montserratTextTheme(),
-        tabBarTheme: const TabBarTheme(indicator: BoxDecoration(border: Border())),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
       home: const MainScreen(),
     );

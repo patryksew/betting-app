@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:fuksiarz/screens/search_screen.dart/search_screen.dart';
 
-class SliverSearchBar extends StatelessWidget {
-  const SliverSearchBar({super.key});
+class SliverSearchButton extends StatelessWidget {
+  const SliverSearchButton({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SliverPersistentHeader(
       pinned: true,
-      delegate: _SliverSearchBarDelegate(),
+      delegate: _SliverSearchButtonDelegate(),
     );
   }
 }
 
-class _SliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
+class _SliverSearchButtonDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
@@ -36,7 +37,9 @@ class _SliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
                 ),
                 padding: const EdgeInsets.all(10),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SearchScreen()));
+              },
               child: Row(
                 children: const [
                   Icon(
