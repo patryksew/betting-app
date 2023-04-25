@@ -9,11 +9,12 @@ class OddsButtons extends StatefulWidget {
   State<OddsButtons> createState() => _OddsButtonsState();
 }
 
-class _OddsButtonsState extends State<OddsButtons> {
+class _OddsButtonsState extends State<OddsButtons> with AutomaticKeepAliveClientMixin {
   int? _selectedButtonIndex;
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Row(
       children: getButtons(),
     );
@@ -48,6 +49,7 @@ class _OddsButtonsState extends State<OddsButtons> {
           } else {
             _selectedButtonIndex = index;
           }
+          updateKeepAlive();
         });
       },
       style: ElevatedButton.styleFrom(
@@ -74,4 +76,7 @@ class _OddsButtonsState extends State<OddsButtons> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => _selectedButtonIndex != null;
 }

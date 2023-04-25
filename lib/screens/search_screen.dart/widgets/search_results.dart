@@ -12,6 +12,7 @@ class SearchResults extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      addAutomaticKeepAlives: true,
       itemCount: categoriesList.length,
       itemBuilder: (_, index) {
         final EventCategory currentCategory = categoriesList[index];
@@ -26,7 +27,7 @@ class SearchResults extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(vertical: 5),
                 child: Text(
                   softWrap: true,
-                  currentCategory.fullDisplayName,
+                  currentCategory.displayName,
                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                 ),
               ),
