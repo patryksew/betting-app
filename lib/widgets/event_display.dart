@@ -23,7 +23,7 @@ class EventDisplay extends StatelessWidget {
           Row(
             children: [
               Text(
-                '${event.category3} ${DateFormat('MM.DD').format(event.eventStart)}',
+                '${event.category3} ${DateFormat('MM.dd').format(event.eventStart)}',
                 style: const TextStyle(
                   fontSize: 8,
                   fontWeight: FontWeight.w600,
@@ -35,7 +35,7 @@ class EventDisplay extends StatelessWidget {
           Row(
             children: [
               Text(
-                DateFormat('HH:mm').format(event.eventStart),
+                DateFormat.Hm().format(event.eventStart),
                 style: const TextStyle(
                   fontSize: 8,
                   fontWeight: FontWeight.w600,
