@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:fuksiarz/models/events_by_category_result.dart';
 import 'package:http/http.dart' as http;
 
@@ -29,7 +30,8 @@ class EventsByCategoriesService {
     final response = await http
         .get(Uri(scheme: 'https', host: apiHost, path: '/rest/market/categories/multi/$parsedCategories/events'));
 
-    final responseBody = json.decode(utf8.decode(response.bodyBytes));
+    final bodyUtf8Decoded = await compute(utf8.decode, response.bodyBytes);
+    final responseBody = await compute(json.decode, bodyUtf8Decoded);
 
     if (responseBody['code'] != 200) {
       throw Exception(responseBody["description"]);

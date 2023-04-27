@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:fuksiarz/models/event.dart';
 import 'package:fuksiarz/models/event_category.dart';
@@ -19,10 +17,6 @@ class EventsByCategoriesList extends StatelessWidget {
     List<Widget> items = [];
     Function(EventCategory category) isExpanded = Provider.of<ExpandedCategoriesProvider>(context).isExpanded;
 
-    // result.forEach((
-    //   EventCategory category,
-    //   Map<EventCategory, List<Event>> subcategories,
-    // )
     for (var entry in result.entries) {
       EventCategory category = entry.key;
       Map<EventCategory, List<Event>> subcategories = entry.value;
@@ -34,7 +28,6 @@ class EventsByCategoriesList extends StatelessWidget {
       }
 
       items.add(EventCategoryHeaderBig(
-        isExpanded: true,
         eventsCount: eventsCount,
         category: category,
       ));

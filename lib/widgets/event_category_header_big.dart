@@ -4,12 +4,10 @@ import 'package:fuksiarz/providers/expanded_categories_provider.dart';
 import 'package:provider/provider.dart';
 
 class EventCategoryHeaderBig extends StatelessWidget {
-  final bool isExpanded;
   final int eventsCount;
   final EventCategory category;
 
-  const EventCategoryHeaderBig(
-      {super.key, required this.isExpanded, required this.eventsCount, required this.category});
+  const EventCategoryHeaderBig({super.key, required this.eventsCount, required this.category});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +52,9 @@ class EventCategoryHeaderBig extends StatelessWidget {
               margin: const EdgeInsets.only(right: 10),
               height: 30,
               width: 30,
-              child: isExpanded ? const Icon(Icons.keyboard_arrow_down) : const Icon(Icons.keyboard_arrow_up),
+              child: Provider.of<ExpandedCategoriesProvider>(context).isExpanded(category)
+                  ? const Icon(Icons.keyboard_arrow_down)
+                  : const Icon(Icons.keyboard_arrow_up),
             ),
           ],
         ),

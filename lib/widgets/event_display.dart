@@ -87,7 +87,7 @@ class EventDisplay extends StatelessWidget {
                     ],
                   ),
                 ),
-                if (event.outcomesOdds.length <= 3)
+                if (event.outcomesOdds.length == 3 && event.outcomesOdds.length == 2)
                   OddsButtons(event.outcomesOdds)
                 else
                   ElevatedButton(
@@ -114,8 +114,6 @@ class EventDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Event display');
-
     if (expandedNotifier == null) return body(context);
 
     return ValueListenableBuilder(

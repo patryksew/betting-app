@@ -1,5 +1,3 @@
-import 'dart:math';
-
 class Event {
   final int id;
   final DateTime eventStart;
@@ -16,19 +14,6 @@ class Event {
     required this.outcomesOdds,
     required this.category3,
   });
-
-  //TODO remove later
-  static final random = Random();
-  factory Event.example() {
-    return Event(
-      id: random.nextInt(10000),
-      eventStart: DateTime.fromMillisecondsSinceEpoch(random.nextInt(1682419093)),
-      gamesCount: random.nextInt(100),
-      participants: [random.nextInt(100).toString(), random.nextInt(100).toString()],
-      outcomesOdds: [random.nextInt(1000) / 100, random.nextInt(1000) / 100],
-      category3: random.nextInt(3).toString(),
-    );
-  }
 
   factory Event.fromJson(Map data) {
     final eventStart = DateTime.fromMillisecondsSinceEpoch(data['eventStart']);

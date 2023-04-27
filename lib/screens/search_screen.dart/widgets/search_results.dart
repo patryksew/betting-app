@@ -26,22 +26,7 @@ class SearchResults extends StatelessWidget {
       shrinkWrap: true,
       addAutomaticKeepAlives: true,
       itemCount: items.length,
-      itemBuilder: (_, index) {
-        // final EventCategory currentCategory = categoriesList[index];
-        // final eventsToDisplay = events[currentCategory]!.map((Event event) => EventDisplay(event)).toList();
-
-        print('Result');
-
-        return items[index];
-
-        // return Column(
-        //   crossAxisAlignment: CrossAxisAlignment.start,
-        //   children: [
-        //     EventCategoryHeaderSmall(currentCategory: currentCategory),
-        //     ...eventsToDisplay,
-        //   ],
-        // );
-      },
+      itemBuilder: (_, index) => items[index],
     );
   }
 }

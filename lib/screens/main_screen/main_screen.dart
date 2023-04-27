@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fuksiarz/models/event_category.dart';
 import 'package:fuksiarz/providers/events_by_categories_provider.dart';
 import 'package:fuksiarz/screens/main_screen/bodies/my_body.dart';
 import 'package:fuksiarz/screens/main_screen/widgets/sliver_filter_bar.dart';
-import 'package:fuksiarz/services/events_by_category_service.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/sliver_header.dart';

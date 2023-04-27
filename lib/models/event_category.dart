@@ -1,14 +1,16 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
+@immutable
 class EventCategory with EquatableMixin {
   final List<int> ids;
 
   final List<String> names;
 
-  EventCategory(this.ids, this.names);
+  const EventCategory(this.ids, this.names);
 
   factory EventCategory.fromId(int id) {
-    return EventCategory([id], []);
+    return EventCategory([id], const []);
   }
 
   String get displayName {

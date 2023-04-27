@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fuksiarz/global/available_categories.dart';
 import 'package:fuksiarz/models/event_category.dart';
 import 'package:fuksiarz/providers/events_by_categories_provider.dart';
 import 'package:provider/provider.dart';
@@ -65,16 +66,7 @@ class _SliverFilterDelegate extends SliverPersistentHeaderDelegate {
   List<Widget> getChildren(int index) {
     switch (index) {
       case 1:
-        final categories = [
-          EventCategory([1], ['Piłka nożna']),
-          EventCategory([2], ['Koszykówka']),
-          EventCategory([3], ['Baseball']),
-          EventCategory([4], ['Hokej na lodzie']),
-          EventCategory([5], ['Tenis']),
-          EventCategory([6], ['Piłka ręczna']),
-          EventCategory([7], ['Unihokej']),
-        ];
-        return categories.map((e) => _Item(category: e)).toList();
+        return availableCategories.map((e) => _Item(category: e)).toList();
       default:
         return [];
     }
@@ -93,6 +85,7 @@ class _SliverFilterDelegate extends SliverPersistentHeaderDelegate {
 class _Item extends StatelessWidget {
   final EventCategory category;
 
+  // ignore: unused_element
   const _Item({super.key, required this.category});
 
   @override
