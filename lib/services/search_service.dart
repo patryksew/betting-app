@@ -9,9 +9,9 @@ class SearchService {
 
   Future<SearchResult> getSearchResult(String pattern) async {
     try {
-      final eventsIds = await getEventsIds(pattern);
+      final eventsIds = await _getEventsIds(pattern);
       if (eventsIds.isEmpty) return SearchResult.empty();
-      final eventsDetails = await getEventsDetails(eventsIds);
+      final eventsDetails = await _getEventsDetails(eventsIds);
 
       return SearchResult.fromJson(eventsDetails);
     } on Exception catch (e) {
@@ -19,7 +19,7 @@ class SearchService {
     }
   }
 
-  Future<List<int>> getEventsIds(String pattern) async {
+  Future<List<int>> _getEventsIds(String pattern) async {
     final body = jsonEncode({
       "areas": ["LIVE_EVENT", "PREMATCH_EVENT"],
       "languageCode": "pl",
@@ -38,7 +38,7 @@ class SearchService {
 
     final responseBody = json.decode(utf8.decode(response.bodyBytes));
     if (responseBody['code'] != 200) {
-      throw Exception('Something went wrong: ${responseBody["description"]}');
+      throw Exception(responseBody["description"]);
     }
 
     final List<int> ids = [];
@@ -50,7 +50,7 @@ class SearchService {
     return ids;
   }
 
-  Future<List> getEventsDetails(List<int> ids) async {
+  Future<List> _getEventsDetails(List<int> ids) async {
     String parsedIds = '';
     for (final id in ids) {
       parsedIds += ',$id';
@@ -62,7 +62,7 @@ class SearchService {
     final responseBody = json.decode(utf8.decode(response.bodyBytes));
 
     if (responseBody['code'] != 200) {
-      throw Exception('Something went wrong: ${responseBody["description"]}');
+      throw Exception(responseBody["description"]);
     }
 
     return responseBody['data'];

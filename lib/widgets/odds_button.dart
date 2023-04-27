@@ -53,7 +53,7 @@ class _OddsButtonsState extends State<OddsButtons> with AutomaticKeepAliveClient
         });
       },
       style: ElevatedButton.styleFrom(
-        side: BorderSide(color: Theme.of(context).dividerColor),
+        side: isSelected ? null : BorderSide(color: Theme.of(context).dividerColor),
         elevation: 0,
         fixedSize: const Size(49, 45),
         padding: const EdgeInsets.all(0),

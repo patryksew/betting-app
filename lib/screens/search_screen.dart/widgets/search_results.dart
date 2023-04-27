@@ -1,40 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:fuksiarz/models/event.dart';
 import 'package:fuksiarz/models/event_category.dart';
+import 'package:fuksiarz/widgets/event_category_header_small.dart';
 import 'package:fuksiarz/widgets/event_display.dart';
 
 class SearchResults extends StatelessWidget {
   final Map<EventCategory, List<Event>> events;
-  final List<EventCategory> categoriesList;
+  final bool shouldScroll;
 
-  SearchResults(this.events, {super.key}) : categoriesList = events.keys.toList();
+  const SearchResults(this.events, {this.shouldScroll = true, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      addAutomaticKeepAlives: true,
-      itemCount: categoriesList.length,
-      itemBuilder: (_, index) {
-        final EventCategory currentCategory = categoriesList[index];
-        final eventsToDisplay = events[currentCategory]!.map((Event event) => EventDisplay(event)).toList();
+    final items = [];
 
-        return Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 5),
-                child: Text(
-                  softWrap: true,
-                  currentCategory.displayName,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-                ),
-              ),
-              ...eventsToDisplay,
-            ],
-          ),
-        );
+    events.forEach((key, value) {
+      items.add(EventCategoryHeaderSmall(currentCategory: key));
+      for (Event event in value) {
+        items.add(EventDisplay(event));
+      }
+    });
+
+    return ListView.builder(
+      physics: shouldScroll ? null : const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      addAutomaticKeepAlives: true,
+      itemCount: items.length,
+      itemBuilder: (_, index) {
+        // final EventCategory currentCategory = categoriesList[index];
+        // final eventsToDisplay = events[currentCategory]!.map((Event event) => EventDisplay(event)).toList();
+
+        print('Result');
+
+        return items[index];
+
+        // return Column(
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     EventCategoryHeaderSmall(currentCategory: currentCategory),
+        //     ...eventsToDisplay,
+        //   ],
+        // );
       },
     );
   }

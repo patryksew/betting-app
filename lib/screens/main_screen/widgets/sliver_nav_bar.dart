@@ -29,98 +29,109 @@ class _CustomSliverPersistentHeaderDelegate extends SliverPersistentHeaderDelega
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: SingleChildScrollView(
-        controller: _scrollController,
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            _TabBarItem(
-              index: 0,
-              tabController: _tabController,
-              scrollController: _scrollController,
-              child: Text(
-                'OFERTA',
-                style: _textStyle,
-              ),
-            ),
-            _TabBarItem(
-              index: 1,
-              tabController: _tabController,
-              scrollController: _scrollController,
-              child: Text(
-                'MOJE',
-                style: _textStyle,
-              ),
-            ),
-            _TabBarItem(
-              index: 2,
-              tabController: _tabController,
-              scrollController: _scrollController,
+      child: Row(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 45,
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  Text(
-                    'LIVE',
-                    style: _textStyle,
+                  _TabBarItem(
+                    index: 0,
+                    tabController: _tabController,
+                    scrollController: _scrollController,
+                    child: Text(
+                      'OFERTA',
+                      style: _textStyle,
+                    ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 3),
-                    width: 6,
-                    height: 6,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color.fromRGBO(39, 194, 41, 1),
+                  _TabBarItem(
+                    index: 1,
+                    tabController: _tabController,
+                    scrollController: _scrollController,
+                    child: Text(
+                      'MOJE',
+                      style: _textStyle,
+                    ),
+                  ),
+                  _TabBarItem(
+                    index: 2,
+                    tabController: _tabController,
+                    scrollController: _scrollController,
+                    child: Row(
+                      children: [
+                        Text(
+                          'LIVE',
+                          style: _textStyle,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 3),
+                          width: 6,
+                          height: 6,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color.fromRGBO(39, 194, 41, 1),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  _TabBarItem(
+                    index: 3,
+                    tabController: _tabController,
+                    scrollController: _scrollController,
+                    child: Text(
+                      'HOT',
+                      style: _textStyle,
+                    ),
+                  ),
+                  _TabBarItem(
+                    index: 4,
+                    tabController: _tabController,
+                    scrollController: _scrollController,
+                    child: Text(
+                      'CASHBACK',
+                      style: _textStyle,
+                    ),
+                  ),
+                  _TabBarItem(
+                    index: 5,
+                    tabController: _tabController,
+                    scrollController: _scrollController,
+                    child: Text(
+                      'MEGA BOOST',
+                      style: _textStyle,
+                    ),
+                  ),
+                  _TabBarItem(
+                    index: 6,
+                    tabController: _tabController,
+                    scrollController: _scrollController,
+                    child: Text(
+                      'TV',
+                      style: _textStyle,
                     ),
                   ),
                 ],
               ),
             ),
-            _TabBarItem(
-              index: 3,
-              tabController: _tabController,
-              scrollController: _scrollController,
-              child: Text(
-                'HOT',
-                style: _textStyle,
-              ),
+          ),
+          Container(
+            width: 45,
+            height: 45,
+            decoration: BoxDecoration(
+                border: Border(
+              bottom: BorderSide(color: Theme.of(context).dividerColor),
+              left: BorderSide(color: Theme.of(context).dividerColor),
+            )),
+            child: const Icon(
+              Icons.calendar_month_outlined,
+              size: 24,
             ),
-            _TabBarItem(
-              index: 4,
-              tabController: _tabController,
-              scrollController: _scrollController,
-              child: Text(
-                'CASHBACK',
-                style: _textStyle,
-              ),
-            ),
-            _TabBarItem(
-              index: 5,
-              tabController: _tabController,
-              scrollController: _scrollController,
-              child: const Icon(
-                Icons.calendar_month_outlined,
-                size: 24,
-              ),
-            ),
-            _TabBarItem(
-              index: 6,
-              tabController: _tabController,
-              scrollController: _scrollController,
-              child: Text(
-                'MEGA BOOST',
-                style: _textStyle,
-              ),
-            ),
-            _TabBarItem(
-              index: 7,
-              tabController: _tabController,
-              scrollController: _scrollController,
-              child: Text(
-                'TV',
-                style: _textStyle,
-              ),
-            ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
@@ -190,7 +201,6 @@ class __TabBarItemState extends State<_TabBarItem> {
         child: Container(
           padding: EdgeInsets.symmetric(
             horizontal: selected ? 14 : 15,
-            // vertical: 17,
           ),
           height: 45,
           decoration: BoxDecoration(

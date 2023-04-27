@@ -7,8 +7,18 @@ class EventCategory with EquatableMixin {
 
   EventCategory(this.ids, this.names);
 
-  String get fullDisplayName {
-    return '${names[0]} > ${names[1]} > ${names[2]}';
+  factory EventCategory.fromId(int id) {
+    return EventCategory([id], []);
+  }
+
+  String get displayName {
+    String value = names[0];
+
+    for (var i = 1; i < names.length; i++) {
+      value += ' > ${names[i]}';
+    }
+
+    return value;
   }
 
   @override
