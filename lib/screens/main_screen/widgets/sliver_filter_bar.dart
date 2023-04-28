@@ -99,7 +99,7 @@ class _Item extends StatelessWidget {
             borderRadius: BorderRadius.circular(25),
             side: BorderSide(color: Theme.of(context).dividerColor),
           ),
-          padding: const EdgeInsets.all(9.5),
+          padding: const EdgeInsets.symmetric(horizontal: 9.5),
           backgroundColor: Provider.of<EventsByCategoriesProvider>(context).isSelected(category)
               ? Theme.of(context).primaryColor
               : Theme.of(context).scaffoldBackgroundColor,

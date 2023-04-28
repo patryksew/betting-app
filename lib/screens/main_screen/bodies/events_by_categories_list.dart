@@ -32,17 +32,23 @@ class EventsByCategoriesList extends StatelessWidget {
         category: category,
       ));
 
-      if (!isExpanded(category)) continue;
+      if (isExpanded(category)) {
+        subcategories.forEach((EventCategory category, List<Event> events) {
+          items.add(EventCategoryHeaderSmall(currentCategory: category));
 
-      subcategories.forEach((EventCategory category, List<Event> events) {
-        items.add(EventCategoryHeaderSmall(currentCategory: category));
+          for (Event event in events) {
+            items.add(EventDisplay(
+              event,
+            ));
+          }
+        });
+      }
 
-        for (Event event in events) {
-          items.add(EventDisplay(
-            event,
-          ));
-        }
-      });
+      items.add(Container(
+        height: 1,
+        width: double.infinity,
+        decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Theme.of(context).dividerColor))),
+      ));
     }
 
     return SliverList(

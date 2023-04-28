@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fuksiarz/global/available_categories.dart';
 import 'package:fuksiarz/models/event.dart';
 import 'package:fuksiarz/models/event_category.dart';
 
@@ -22,13 +23,19 @@ class EventsByCategoryResult {
         hasError = true,
         isEmpty = true;
 
-  factory EventsByCategoryResult.fromJson(List data) {
+  factory EventsByCategoryResult.fromJson(List data, List<int> selectedCategoriesIds) {
     final Map<EventCategory, Map<EventCategory, List<Event>>> events = {};
+
+    //Adding level 0 categories, because I think it's the most efficient way to have events sorted
+    final selectedCategories =
+        availableCategories.where((category) => selectedCategoriesIds.contains(category.ids[0])).toList();
+
+    for (final category in selectedCategories) {
+      events.putIfAbsent(category, () => {});
+    }
 
     for (final rawEvent in data) {
       final eventTopCategory = EventCategory([rawEvent['category1Id']], [rawEvent['category1Name']]);
-
-      events.putIfAbsent(eventTopCategory, () => {});
 
       final eventCategory = EventCategory(
         [

@@ -14,7 +14,7 @@ class EventsByCategoriesService {
 
     try {
       final events = await _getEvents(categories);
-      return EventsByCategoryResult.fromJson(events);
+      return EventsByCategoryResult.fromJson(events, categories);
     } on Exception catch (e) {
       return EventsByCategoryResult.error(e.toString());
     }
