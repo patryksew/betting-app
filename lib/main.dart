@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Patryk Sewastianowicz Fuksiarz',
+      title: 'Fuksiarz Patryk Sewastianowicz',
       theme: ThemeData(
         primaryColor: const Color.fromRGBO(198, 40, 40, 1),
         appBarTheme: const AppBarTheme(

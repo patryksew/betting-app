@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "fuksiarz" "\0"
+            VALUE "FileDescription", "Fuksiarz Patryk Sewastianowicz" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "fuksiarz" "\0"
+            VALUE "InternalName", "Fuksiarz Patryk Sewastianowicz" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "fuksiarz.exe" "\0"
-            VALUE "ProductName", "fuksiarz" "\0"
+            VALUE "ProductName", "Fuksiarz Patryk Sewastianowicz" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
