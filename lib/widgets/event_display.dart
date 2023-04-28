@@ -87,7 +87,7 @@ class EventDisplay extends StatelessWidget {
                     ],
                   ),
                 ),
-                if (event.outcomesOdds.length == 3 && event.outcomesOdds.length == 2)
+                if (event.outcomesOdds.length == 3 || event.outcomesOdds.length == 2)
                   OddsButtons(event.outcomesOdds)
                 else
                   ElevatedButton(
